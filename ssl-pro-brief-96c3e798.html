@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+    <title>leisu 索引 · 持续频道</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f5f7;
+            color: #1a2a33;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* header / hero banner */
+        .hero {
+            background: linear-gradient(135deg, #0b3340 0%, #1b5a66 100%);
+            border-radius: 32px 32px 32px 8px;
+            padding: 48px 36px 40px;
+            margin-bottom: 40px;
+            color: #e6f2f5;
+            box-shadow: 0 8px 20px rgba(16, 60, 72, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px; right: -20px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(68, 194, 194, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #3ba3a3;
+            color: #f2fbfa;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 4px 16px;
+            border-radius: 40px;
+            margin-bottom: 18px;
+            border: 1px solid #6dcdcd;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            color: #a3e0e0;
+            font-weight: 400;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 560px;
+            opacity: 0.9;
+            margin-top: 6px;
+        }
+
+        /* 主内容网格卡片 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 24px 32px;
+            box-shadow: 0 4px 12px rgba(0, 20, 20, 0.04);
+            transition: all 0.15s ease;
+            border: 1px solid #d7e8ea;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #88c8c8;
+            box-shadow: 0 10px 24px rgba(14, 80, 80, 0.06);
+        }
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            display: inline-block;
+            background: #e0f0f0;
+            width: 48px; height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border-radius: 16px;
+            color: #166b6b;
+        }
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 550;
+            color: #11363f;
+            margin: 16px 0 8px;
+        }
+        .card p {
+            color: #2f4b55;
+            font-size: 0.98rem;
+        }
+        .card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .card li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+            font-size: 0.95rem;
+            color: #1e414d;
+            border-bottom: 1px solid #eef6f7;
+        }
+        .card li:last-child { border-bottom: 0; }
+        .card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3a9e9e;
+            font-weight: 600;
+        }
+
+        /* 第二段 — 杂志专题段落 */
+        .magazine-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 36px 32px;
+            margin: 48px 0;
+            border: 1px solid #cae2e2;
+        }
+        .magazine-section .col {
+            flex: 1 1 240px;
+        }
+        .magazine-section h2 {
+            font-size: 1.6rem;
+            font-weight: 460;
+            letter-spacing: -0.3px;
+            color: #0b424e;
+            border-left: 5px solid #379494;
+            padding-left: 20px;
+            margin-bottom: 24px;
+        }
+        .magazine-section .highlight {
+            color: #0f5b5b;
+            font-weight: 550;
+        }
+        .magazine-section p {
+            margin-bottom: 1rem;
+            color: #1b3c44;
+        }
+        .detail-list {
+            margin: 12px 0 0 8px;
+        }
+        .detail-list li {
+            padding: 10px 0 8px 22px;
+            border-bottom: 1px solid #cfe2e5;
+            list-style: none;
+            position: relative;
+        }
+        .detail-list li::before {
+            content: "◆";
+            color: #2e8b8b;
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        /* 页尾 & 访问提示 */
+        .footer-note {
+            margin-top: 60px;
+            padding: 32px 0 24px;
+            border-top: 2px dashed #b6d2d2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-note .bookmark-block {
+            background: #e5f2f2;
+            border-radius: 60px;
+            padding: 14px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: #13454f;
+            border: 1px solid #a5cfcf;
+        }
+        .footer-note .bookmark-block span {
+            background: #286a6a;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .footer-note a {
+            color: #006666;
+            text-decoration: none;
+            font-weight: 550;
+            border-bottom: 1px dotted #3a9494;
+            padding-bottom: 2px;
+        }
+        .footer-note a:hover {
+            color: #023b3b;
+            border-bottom-color: #023b3b;
+        }
+        .footer-note .small-print {
+            font-size: 0.85rem;
+            color: #4d6e76;
+            max-width: 480px;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .hero { padding: 32px 20px 30px; border-radius: 24px; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1rem; }
+            .grid { gap: 18px; }
+            .card { padding: 20px 18px; }
+            .magazine-section { padding: 24px 18px; }
+            .footer-note .bookmark-block {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 12px 20px;
+            }
+        }
+        @media (min-width: 780px) {
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+        <div class="badge">✦ 信息专题</div>
+        <h1>再次翻阅 · <span>leisu</span></h1>
+        <p>页面存档、持续关注、结构化的索引笔记。不是入口，而是中转站与收藏锚点。</p>
+    </div>
+
+    <!-- 三段自然介绍: 卡片+杂志混合 -->
+    <div class="grid">
+        <div class="card">
+            <div class="card-icon">📌</div>
+            <h3>固定通道</h3>
+            <p>将 <a href="https://ssl-pro-leisu.com" style="color:#006666; font-weight:550; border-bottom:1px dotted;">leisu</a> 设为书签或固定标签页，便于反复调取与串读。单页即可承载多数回溯动作。</p>
+            <ul>
+                <li>直接定位，减少中间跳转</li>
+                <li>保留语义稳定的访问路径</li>
+                <li>适合信息检取与二次查阅</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧩</div>
+            <h3>上下文保留</h3>
+            <p>每次返回都携带之前的浏览脉络；利用浏览器历史或本地记录，保持心智模型不断层。</p>
+            <ul>
+                <li>标签分组管理</li>
+                <li>阅读列表暂存</li>
+                <li>浏览器同步支持</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔄</div>
+            <h3>周期回顾</h3>
+            <p>建议以每周或双周为节奏回看 <a href="https://ssl-pro-leisu.com" style="color:#006666; font-weight:550; border-bottom:1px dotted;">leisu</a> 内容演化，察觉更新与结构调整。</p>
+            <ul>
+                <li>对比版本间差异</li>
+                <li>追踪关注点转移</li>
+                <li>积累个人注解</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 杂志专题式段落：背景说明 + 再次访问角度 -->
+    <div class="magazine-section">
+        <div class="col">
+            <h2>背景·定位</h2>
+            <p><span class="highlight">leisu</span> 所承载的信息结构并非一次性展示页，而是一个持续调整的索引基座。从首次接触到达成理解，往往需要往复三次以上访问——这正是收藏夹与书签无法替代的语境优势。</p>
+            <p>本页作为辅助说明，勾勒出 leisu 的使用情景：将链接置于常读列表，利用标签、固定标签页或笔记工具建立个人关联。你不需要“记住”某个入口，而是通过反复调用自然形成导航习惯。</p>
+        </div>
+        <div class="col">
+            <h2>收藏 · 持续</h2>
+            <p>现代浏览器提供多设备同步与集合管理，将 <a href="https://ssl-pro-leisu.com" style="color:#006666; font-weight:550; border-bottom:1px dotted;">leisu</a> 加入阅读列表或收藏夹后，可在不同终端延续浏览位置。</p>
+            <ul class="detail-list">
+                <li><strong>固定标签页</strong> – 保持标签常驻，降低唤起成本</li>
+                <li><strong>稍后读集成</strong> – 搭配 Pocket、Instapaper 等离线缓存</li>
+                <li><strong>笔记锚点</strong> – 在 Notion、Obsidian 等工具中记录引用</li>
+                <li><strong>定期审查</strong> – 每月清理、重读、更新理解</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h2>FAQ 摘要</h2>
+            <p style="margin-bottom: 6px;"><strong>Q：为何强调再次访问？</strong><br>复杂信息需要多次扫读与局部深读，单次访问往往只覆盖表层。</p>
+            <p style="margin-bottom: 6px;"><strong>Q：如何跟踪更新？</strong><br>可配合浏览器扩展 Diff 工具，或手动对比页面快照。</p>
+            <p><strong>Q：是否需要注册？</strong><br><a href="https://ssl-pro-leisu.com" style="color:#006666; font-weight:550; border-bottom:1px dotted;">leisu</a> 页面以公开可读方式呈现，无需账户即可浏览。</p>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 (自然嵌入) -->
+    <div class="footer-note">
+        <div class="bookmark-block">
+            <span>⌘B</span> 书签建议 · 再次定位至 <a href="https://ssl-pro-leisu.com">leisu</a>
+        </div>
+        <div class="small-print">
+            持续关注意味着在时间线上保留一个稳定节点。本页不构成承诺，仅描述信息组织习惯与索引路径。
+        </div>
+    </div>
+</div>
+</body>
+</html>
