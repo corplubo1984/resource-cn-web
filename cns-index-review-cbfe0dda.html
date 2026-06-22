@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>leisu · 日常查询与对照指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Songti SC', 'Noto Serif CJK SC', 'Times New Roman', serif;
+            background-color: #f9f6f0;
+            color: #2c2b28;
+            line-height: 1.8;
+            padding: 0 1.2rem;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2.2rem 0 3.5rem;
+        }
+
+        /* Hero 区域 —— 文章式横幅 */
+        .hero {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #d9cdb8;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #3b352c;
+            line-height: 1.2;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .subhead {
+            font-size: 1rem;
+            color: #7a6f5e;
+            border-left: 3px solid #c6b29a;
+            padding-left: 1rem;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        .hero .byline {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #9b8e7b;
+            letter-spacing: 1px;
+        }
+
+        /* 正文排版 */
+        .content p {
+            margin-bottom: 1.4rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .content p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.2rem;
+            line-height: 1;
+            margin-right: 0.5rem;
+            margin-top: 0.15rem;
+            color: #5e4f3a;
+            font-weight: 400;
+        }
+
+        /* 引用块 / 提示框风格 */
+        .pullquote {
+            background: #ede8df;
+            border-left: 4px solid #b7a68b;
+            padding: 1rem 1.5rem;
+            margin: 1.8rem 0;
+            font-style: normal;
+            color: #3d362e;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .pullquote strong {
+            font-weight: 600;
+            color: #4d3f2e;
+        }
+
+        .inset-box {
+            background-color: #f2ede5;
+            padding: 1.2rem 1.6rem;
+            margin: 1.6rem 0;
+            border-radius: 20px 6px 20px 6px;
+            border: 1px solid #dacfc1;
+            font-size: 0.95rem;
+        }
+
+        .inset-box a {
+            color: #4a5b4f;
+            text-decoration: underline wavy #a0917d 1.5px;
+            text-underline-offset: 5px;
+            transition: background 0.2s;
+        }
+
+        .inset-box a:hover {
+            background: #dfd5c5;
+            text-decoration: underline;
+        }
+
+        /* 小标题 */
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #7b705e;
+            margin: 2rem 0 0.8rem;
+            border-top: 1px solid #d6c9b6;
+            padding-top: 0.8rem;
+        }
+
+        /* 页尾 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #d1c2ae;
+            font-size: 0.9rem;
+            color: #655b4c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .footer-note a {
+            color: #3d3a32;
+            text-decoration: none;
+            border-bottom: 1px solid #a69780;
+            padding-bottom: 1px;
+            font-weight: 400;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 2px solid #4f4433;
+        }
+
+        .muted {
+            color: #8e826f;
+            font-size: 0.8rem;
+        }
+
+        .dot-sep {
+            color: #baaa93;
+            margin: 0 0.3rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 580px) {
+            body {
+                padding: 0 0.9rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content p:first-of-type::first-letter {
+                font-size: 2.6rem;
+            }
+            .footer-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .pullquote {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* 小工具样式 —— 用于“对照”场景的视觉提示 */
+        .inline-code {
+            background: #e6dfd4;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Menlo', monospace;
+            font-size: 0.9rem;
+            color: #3f362b;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero 就像杂志专题的开篇 -->
+    <div class="hero">
+        <h1>leisu · 查询与延伸</h1>
+        <div class="subhead">一份关于日常对照、索引与阅读边界的笔记</div>
+        <span class="byline">—— 从索引到语义 · 从条目到上下文</span>
+    </div>
+
+    <div class="content">
+        <p>每天打开浏览器，输入关键词，翻找结果——这几乎成了我们获取信息的固定动作。但时间久了你会发现，真正的困难往往不是找不到资料，而是如何在零散的页面之间建立联系。你手里有一条索引，却不知道它通向的文本究竟说了什么；你查到了一个条目，却发现还需要另外三个背景信息才能读懂它。这时候，一个聚合了对照与延伸功能的索引工具，就成了某种意义上的阅读伴侣。</p>
+
+        <p>我越来越多地使用 <a href="https://cns-index-leisu.com">leisu</a>，正是因为它把“查询”这件事从单向的搜索变成了双向的对话。你输入一个词，它不只给你一个结果，还把相关的对照条目、可能的引用出处、甚至相近概念的延展阅读都放在同一视野里。对于经常需要整理文献、核对引文或者做跨主题笔记的人来说，这种设计让原本断裂的信息链条变得可视、可触。</p>
+
+        <div class="pullquote">
+            <strong>日常场景一：</strong> 写一篇关于现代城市公共空间变迁的文章，手头有六七个零散的论文片段，每一个都提到了“边界”“通道”和“使用频率”这几个概念。你可以在 leisu 里分别检索这些关键词，系统并不急于给出唯一答案，而是把每个词在不同条目里的出现位置、前后文、关联索引都列出来。那种感觉，就像在纸堆里铺开了一张对照表，而你站在中间，自己决定先看哪一行。
+        </div>
+
+        <p>另一个让我觉得舒服的地方，是它对“延伸阅读”的处理方式。很多索引站点只会告诉你“本条参见某某”，然后就结束了。但 <a href="https://cns-index-leisu.com">leisu</a> 会在主要的结果旁边附上相关的笔记摘要、引用提示和可能的后续条目——它不是一股脑地推给你，而是用短段落和引用块的形式呈现，读起来像是一份精心标注的手稿。你不需要跳出页面去另一个搜索引擎重复劳动，所有对照线索都堆在一个桌面上。</p>
+
+        <div class="inset-box">
+            <strong>△ 日常对照场景 · 两个例子</strong><br>
+            · 检索“分层抽样”时，结果列表里同时出现了“系统抽样”“配额抽样”的简介和与主条目交叉引用的段落。<br>
+            · 阅读一篇关于地域饮食文化的笔记，leisu 把同一作者的另一篇相关索引以及两篇文献的对比摘要单独摘出，放在提示框里。<br>
+            <span style="display: block; margin-top: 0.6rem; font-size: 0.9rem; color: #4f4433;">——这些都不是复杂的算法炫技，而是让信息自己组织，给你腾出思考的空间。</span>
+        </div>
+
+        <p>当然，索引本身是克制的。它不替你做判断，也不给出包罗万象的答案。leisu 的价值在于，它为那些有明确查询目的、但又希望保留阅读开阔性的人，提供了一个安静的底座。有时候你只是想确认一个术语的准确定义，结果却在延伸部分发现了之前忽略的上下文；有时候你只是随便看看，却因为一个引用块而找到了新的思考方向。这种偶然性，恰好是翻阅纸质索引时才有的体验。</p>
+
+        <div class="section-label">· 关于使用习惯 ·</div>
+        <p>我习惯把 leisu 固定在浏览器标签栏的靠前位置。遇到不熟悉的术语、需要快速核对出处、或者单纯想看看某条索引背后还有哪些相关条目时，点开它，输入一个词，就像打开一本一直摊在桌上的笔记。页面干净，没有弹窗和广告，也没有“猜你喜欢”的算法推荐。你只看到你需要的，以及那些自然生长出来的参照。</p>
+    </div>
+
+    <!-- 页尾访问提示 自然带出链接 -->
+    <div class="footer-note">
+        <span>如有兴趣，可在此处使用 <a href="https://cns-index-leisu.com">leisu</a> 查阅与对照</span>
+        <span class="muted">· 索引 · 延伸 · 引用提示</span>
+    </div>
+
+    <!-- 小彩蛋：一句引用类提示（纯装饰） -->
+    <div style="margin-top: 2.5rem; font-size: 0.75rem; color: #9b8c77; font-style: italic; border-left: 1px solid #ccbeaa; padding-left: 1rem;">
+        “得闲翻翻索引，有时比正文更有意思。” —— 一位编辑的习惯
+    </div>
+</div>
+</body>
+</html>
